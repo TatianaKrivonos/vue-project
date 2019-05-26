@@ -1,20 +1,27 @@
 <template>
-  <div class="">
-
-    <app-counter></app-counter>
-    <app-car></app-car>
+  <div>
+    <app-car>
+      <h2 slot="title">{{ carName }}</h2>
+      <p slot="text">Далеко-далеко за.</p>
+    </app-car>
   </div>
 </template>
 
 <script>
 import Car from './Car.vue'
-import Counter from './Counter.vue'
 
 export default {
+  data() {
+      return {
+        carName: 'Ford'
+      }
+  },
   components: {
     appCar: Car,
-    appCounter: Counter
   }
 }
 </script>
+<style scoped>
+
+</style>
 

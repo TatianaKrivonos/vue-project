@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h2>Car</h2>
-    <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>
+    <slot name="title"></slot>
+    <hr>
+    <hr>
+    <slot name="text"></slot>
   </div>
 </template>
 <script>
-  import {eventEmitter} from './main'
-
   export default {
 
   }
@@ -14,5 +14,10 @@
 <style scoped>
   div {
     border: 1px solid #000;
+    padding: 10px;
+  }
+
+  h2 {
+    color: red;
   }
 </style>
