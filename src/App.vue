@@ -1,8 +1,10 @@
 <template>
   <div>
     <app-car>
-      <h2 slot="title" v-colored>{{ carName }}</h2>
+      <h2 slot="title" v-colored v-if="visible">{{ carName }}</h2>
       <p slot="text">Далеко-далеко за.</p>
+      <button slot="btn" @click="visible = !visible">Toggle</button>
+      <button slot="btn2" @click="carName = 'New title'">Change title</button>
     </app-car>
   </div>
 </template>
@@ -13,7 +15,8 @@ import Car from './Car.vue'
 export default {
   data() {
       return {
-        carName: 'Ford'
+        carName: 'Audi',
+        visible: true
       }
   },
   components: {
