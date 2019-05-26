@@ -1,12 +1,19 @@
 <template>
   <div class="">
     <h1>Parent: {{ carName }}</h1>
-    <app-car :carName="carName" :carYear="carYear" @nameChanged="carName = $event"></app-car>
+    <app-counter></app-counter>
+    <app-car
+      :carName="carName"
+      :carYear="carYear"
+      @nameChanged="carName = $event"
+      @counterUpdated="counter = $event">
+    </app-car>
   </div>
 </template>
 
 <script>
 import Car from './Car.vue'
+import Counter from './Counter.vue'
 export default {
   data () {
     return {
@@ -15,7 +22,8 @@ export default {
     }
   },
   components: {
-    appCar: Car
+    appCar: Car,
+    appCounter: Counter
   }
 }
 </script>

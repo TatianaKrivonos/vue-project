@@ -3,18 +3,23 @@
     <h3>Name: {{ carName }} \ {{ reverseName }}</h3>
     <p>Year: {{carYear}} </p>
     <button @click="changeName">Change name</button>
+    <button @click="updateCounter">Update Counter</button>
   </div>
 </template>
 <script>
+  import {eventEmitter} from './main'
   export default {
     props: {
       carName: String,
-      carYear: Number
+      carYear: Number,
     },
     methods: {
       changeName() {
         this.carName = 'Mazda'
         this.$emit('nameChanged', this.carName)
+      },
+      updateCounter() {
+        eventEmitter.$emit('counterUpdated', 3)
       }
     },
     computed: {
