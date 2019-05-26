@@ -12,12 +12,5 @@
   }
 </script>
 <style scoped>
-  div {
-    border: 1px solid #000;
-    padding: 10px;
-  }
 
-  h2 {
-    color: red;
-  }
 </style>

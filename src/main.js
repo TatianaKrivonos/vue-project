@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
+import colorDirective from './color'
 
-export const eventEmitter = new Vue()
+Vue.directive('colored', colorDirective)
 
 new Vue({
   el: '#app',
