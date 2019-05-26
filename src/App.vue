@@ -1,10 +1,11 @@
 <template>
   <div>
     <app-car>
-      <h2 slot="title" v-colored="'#ccc'" v-if="visible">{{ carName }}</h2>
-      <p slot="text">Далеко-далеко за.</p>
-      <button slot="btn" @click="visible = !visible">Toggle</button>
-      <button slot="btn2" @click="carName = 'New title'">Change title</button>
+      <h2 v-colored:background="'#ccc'" v-if="visible">{{ carName }}</h2>
+      <h2 v-colored:color="'blue'" v-if="visible">{{ carName }}</h2>
+      <p >Далеко-далеко за.</p>
+      <button  @click="visible = !visible">Toggle</button>
+      <button @click="carName = 'New title'">Change title</button>
     </app-car>
   </div>
 </template>
