@@ -3,6 +3,7 @@
     <app-car>
       <h2 v-colored:background.font="'#ccc'" v-if="visible">{{ carName }}</h2>
       <h2 v-colored:color.delay.font="'blue'" v-if="visible">{{ carName }}</h2>
+      <h2 v-font>Local font directive</h2>
       <p >Далеко-далеко за.</p>
       <button  @click="visible = !visible">Toggle</button>
       <button @click="carName = 'New title'">Change title</button>
@@ -22,6 +23,13 @@ export default {
   },
   components: {
     appCar: Car,
+  },
+  directives: {
+    font: {
+      bind(el, bindings, vnode) {
+        el.style.fontSize= '40px'
+      }
+    }
   }
 }
 </script>
