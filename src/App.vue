@@ -11,6 +11,12 @@
       <button  @click="visible = !visible">Toggle</button>
       <button @click="carName = 'New title'">Change title</button>
     </app-car>
+
+    <input type="text" v-model="searchName">
+    <ul>
+      <li v-for="name of filteredNames">{{ name }}</li>
+    </ul>
+
   </div>
 </template>
 
@@ -22,12 +28,21 @@ export default {
       return {
         carName: 'Audi',
         visible: true,
-        title: 'Hello Tatiana'
+        title: 'Hello Tatiana',
+        searchName: '',
+        names: ['Vlad', 'Max', 'Tanya', 'Vera']
       }
   },
   filters: {
     lowerCase(val) {
       return val.toLowerCase()
+    }
+  },
+  computed: {
+    filteredNames() {
+      return this.names.filter(name => {
+        return name.toLowerCase().indexOf(this.searchName.toLowerCase()) !== -1
+      })
     }
   },
   components: {
