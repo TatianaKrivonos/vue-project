@@ -20,7 +20,8 @@
     <app-list>
 
     </app-list>
-
+    <textarea v-model="textarea"></textarea>
+    <p>{{ textarea }}</p>
   </div>
 </template>
 
@@ -34,6 +35,7 @@ export default {
         carName: 'Audi',
         visible: true,
         title: 'Hello Tatiana',
+        textarea: 'I am initial text'
       }
   },
   filters: {
@@ -55,6 +57,14 @@ export default {
 }
 </script>
 <style scoped>
+  textarea {
+    height: 100px;
+    width: 400px;
+    resize: none;
+  }
 
+  p {
+    white-space: pre;
+  }
 </style>
 
