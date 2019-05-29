@@ -17,11 +17,16 @@
       <li v-for="name of filteredNames">{{ name }}</li>
     </ul>
 
+    <app-list>
+
+    </app-list>
+
   </div>
 </template>
 
 <script>
 import Car from './Car.vue'
+import listMixin from './listMixin'
 
 export default {
   data() {
@@ -29,8 +34,6 @@ export default {
         carName: 'Audi',
         visible: true,
         title: 'Hello Tatiana',
-        searchName: '',
-        names: ['Vlad', 'Max', 'Tanya', 'Vera']
       }
   },
   filters: {
@@ -38,13 +41,7 @@ export default {
       return val.toLowerCase()
     }
   },
-  computed: {
-    filteredNames() {
-      return this.names.filter(name => {
-        return name.toLowerCase().indexOf(this.searchName.toLowerCase()) !== -1
-      })
-    }
-  },
+  mixins: [listMixin],
   components: {
     appCar: Car,
   },
