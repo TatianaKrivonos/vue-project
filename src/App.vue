@@ -47,6 +47,11 @@
       <input type="radio" value="facebook" v-model="radioSocial"> Facebook
     </label>
     <p>{{ radioSocial }}</p>
+
+    <select v-model="socialSelect">
+      <option v-for="s in socialList">{{ s }}</option>
+    </select>
+    <p>{{ socialSelect }}</p>
   </div>
 </template>
 
@@ -62,7 +67,9 @@ export default {
         title: 'Hello Tatiana',
         textarea: 'I am initial text',
         social: [],
-        radioSocial: ''
+        radioSocial: '',
+        socialList: ['instagram', 'vk', 'facebook'],
+        socialSelect: 'vk'
       }
   },
   filters: {
