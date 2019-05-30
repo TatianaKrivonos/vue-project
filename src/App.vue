@@ -22,6 +22,21 @@
     </app-list>
     <textarea v-model="textarea"></textarea>
     <p>{{ textarea }}</p>
+
+    <h2>Form inputs</h2>
+    <label for="">
+      <input type="checkbox" value="instagram" v-model="social"> Instagram
+    </label>
+    <label for="">
+      <input type="checkbox" value="vk" v-model="social"> VK
+    </label>
+    <label for="">
+      <input type="checkbox" value="facebook" v-model="social"> Facebook
+    </label>
+
+    <ul>
+      <li v-for="s in social">{{ s }}</li>
+    </ul>
   </div>
 </template>
 
@@ -35,7 +50,8 @@ export default {
         carName: 'Audi',
         visible: true,
         title: 'Hello Tatiana',
-        textarea: 'I am initial text'
+        textarea: 'I am initial text',
+        social: []
       }
   },
   filters: {
