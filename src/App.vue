@@ -52,6 +52,9 @@
       <option v-for="s in socialList">{{ s }}</option>
     </select>
     <p>{{ socialSelect }}</p>
+
+    <input type="text" v-model.number="age">
+    <p>{{ age }}</p>
   </div>
 </template>
 
@@ -69,8 +72,15 @@ export default {
         social: [],
         radioSocial: '',
         socialList: ['instagram', 'vk', 'facebook'],
-        socialSelect: 'vk'
+        socialSelect: 'vk',
+        age: 23
       }
+  },
+  watch: {
+    age(val) {
+      console.log(val)
+      console.log(typeof val)
+    }
   },
   filters: {
     lowerCase(val) {
