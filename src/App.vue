@@ -17,9 +17,6 @@
       <li v-for="name of filteredNames">{{ name }}</li>
     </ul>
 
-    <app-list>
-
-    </app-list>
     <textarea v-model="textarea"></textarea>
     <p>{{ textarea }}</p>
 
@@ -55,12 +52,21 @@
 
     <input type="text" v-model.number="age">
     <p>{{ age }}</p>
+
+    <app-onoff v-model="switched">
+
+    </app-onoff>
+    <div>
+      <h3 v-if="switched">component is enabled</h3>
+      <h3 v-else="switched">component is disabled</h3>
+    </div>
   </div>
 </template>
 
 <script>
 import Car from './Car.vue'
 import listMixin from './listMixin'
+import onOff from './onOff'
 
 export default {
   data() {
@@ -73,7 +79,8 @@ export default {
         radioSocial: '',
         socialList: ['instagram', 'vk', 'facebook'],
         socialSelect: 'vk',
-        age: 23
+        age: 23,
+        switched: false
       }
   },
   watch: {
@@ -90,6 +97,7 @@ export default {
   mixins: [listMixin],
   components: {
     appCar: Car,
+    appOnoff: onOff
   },
   directives: {
     font: {
