@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import colorDirective from './color'
 import List from './List.vue'
+import router from './routes'
 
 Vue.use(Vuelidate)
 Vue.use(VueRouter)
@@ -23,6 +24,7 @@ Vue.mixin({
 
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: h => h(App),
+  router
 })
 

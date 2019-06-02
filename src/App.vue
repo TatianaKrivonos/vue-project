@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2>{{ title }}</h2>
+  <div class="container">
+   <!--  <h2>{{ title }}</h2>
     <h2>{{ title | lowerCase }}</h2>
     <h2>{{ title | upperCase }}</h2>
     <app-car>
@@ -101,8 +101,8 @@
         :disabled="$v.$invalid"
         >Submit</button>
       </form>
-    </div>
-
+    </div> -->
+    <router-view></router-view>
   </div>
 </template>
 
