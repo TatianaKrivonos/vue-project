@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Vuelidate from 'vuelidate'
+import VueRouter from 'vue-router'
 
 import App from './App.vue'
 import colorDirective from './color'
 import List from './List.vue'
 
 Vue.use(Vuelidate)
+Vue.use(VueRouter)
 
 Vue.filter('upperCase', (val) => val.toUpperCase())
 
