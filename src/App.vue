@@ -60,6 +60,22 @@
       <h3 v-if="switched">component is enabled</h3>
       <h3 v-else="switched">component is disabled</h3>
     </div>
+
+    <div class="container">
+      <form class="pt-3">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email"
+                 id="email"
+                 class="form-control"
+                 :class="{'is-invalid': $v.email.$error}"
+                 @blur="$v.email.$touch()"
+                 v-model="email">
+          <div class="invalid-feedback" v-if="!$v.email.required">Email field is required</div>
+          <div class="invalid-feedback" v-if="!$v.email.email">This field should be an email</div>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -67,6 +83,7 @@
 import Car from './Car.vue'
 import listMixin from './listMixin'
 import onOff from './onOff'
+import { required, email } from 'vuelidate/lib/validators'
 
 export default {
   data() {
@@ -80,8 +97,15 @@ export default {
         socialList: ['instagram', 'vk', 'facebook'],
         socialSelect: 'vk',
         age: 23,
-        switched: false
+        switched: false,
+        email: ''
       }
+  },
+  validations: {
+    email: {
+      required,
+      email
+    }
   },
   watch: {
     age(val) {
