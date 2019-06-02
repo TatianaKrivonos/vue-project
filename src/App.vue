@@ -74,6 +74,27 @@
           <div class="invalid-feedback" v-if="!$v.email.required">Email field is required</div>
           <div class="invalid-feedback" v-if="!$v.email.email">This field should be an email</div>
         </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password"
+                 id="password"
+                 class="form-control"
+                 :class="{'is-invalid': $v.password.$error}"
+                 @blur="$v.password.$touch()"
+                 v-model="password">
+          <div class="invalid-feedback" v-if="!$v.password.minLength">Min Length of passwoed is {{ $v.password.$params.minLength.min }}. Now it is {{ password.length }}</div>
+        </div>
+        <div class="form-group">
+          <label for="confirm">Confirm password</label>
+          <input type="password"
+                 id="confirm"
+                 class="form-control"
+                 :class="{'is-invalid': $v.confirmPassword.$error}"
+                 @blur="$v.confirmPassword.$touch()"
+                 v-model="confirmPassword">
+          <div class="invalid-feedback" v-if="!$v.confirmPassword.sameAs">Password should match</div>
+        </div>
       </form>
     </div>
   </div>
@@ -83,28 +104,39 @@
 import Car from './Car.vue'
 import listMixin from './listMixin'
 import onOff from './onOff'
-import { required, email } from 'vuelidate/lib/validators'
+import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 
 export default {
   data() {
-      return {
-        carName: 'Audi',
-        visible: true,
-        title: 'Hello Tatiana',
-        textarea: 'I am initial text',
-        social: [],
-        radioSocial: '',
-        socialList: ['instagram', 'vk', 'facebook'],
-        socialSelect: 'vk',
-        age: 23,
-        switched: false,
-        email: ''
-      }
+    return {
+      carName: 'Audi',
+      visible: true,
+      title: 'Hello Tatiana',
+      textarea: 'I am initial text',
+      social: [],
+      radioSocial: '',
+      socialList: ['instagram', 'vk', 'facebook'],
+      socialSelect: 'vk',
+      age: 23,
+      switched: false,
+      email: '',
+      password: '',
+      confirmPassword: ''
+    }
   },
   validations: {
     email: {
       required,
       email
+    },
+    password: {
+      minLength: minLength(6)
+    },
+    confirmPassword: {
+      sameAs: sameAs((vue) => {
+        return vue.password
+      })
+      // sameAs: sameAs('password')
     }
   },
   watch: {
