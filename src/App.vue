@@ -62,7 +62,7 @@
     </div>
 
     <div class="container">
-      <form class="pt-3">
+      <form class="pt-3" @submit.prevent="onSubmit">
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email"
@@ -96,6 +96,10 @@
                  v-model="confirmPassword">
           <div class="invalid-feedback" v-if="!$v.confirmPassword.sameAs">Password should match</div>
         </div>
+        <button class="btn btn-success"
+        type="submit"
+        :disabled="$v.$invalid"
+        >Submit</button>
       </form>
     </div>
   </div>
@@ -125,6 +129,12 @@ export default {
       confirmPassword: ''
     }
   },
+  methods: {
+    onSubmit() {
+      console.log('Email', this.email)
+      console.log('Password', this.password)
+    }
+  },
   validations: {
     email: {
       required,
@@ -136,7 +146,7 @@ export default {
           setTimeout(() => {
             const value = newEmail !== 'test@mail.ru'
             resolve(value)
-          }, 3000)
+          }, 1000)
         })
       }
     },
