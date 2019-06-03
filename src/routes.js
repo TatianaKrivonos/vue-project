@@ -3,7 +3,7 @@ import Home from './pages/Home'
 import Cars from './pages/Cars'
 import Car from './pages/Car'
 import CarFull from './pages/CarFull'
-
+import ErrorCMP from './pages/Error'
 
 export default new VueRouter({
   routes: [
@@ -13,7 +13,8 @@ export default new VueRouter({
     },
     {
       path: '/cars',
-      component: Cars
+      component: Cars,
+      name: 'cars'
     },
     {
       path: '/car/:id',
@@ -25,6 +26,16 @@ export default new VueRouter({
           name: 'carFull'
         }
       ]
+    },
+    {
+      path: '/none',
+      redirect: {
+        name: 'cars'
+      }
+    },
+    {
+      path: '*',
+      component: ErrorCMP
     }
   ],
   mode: 'history',
