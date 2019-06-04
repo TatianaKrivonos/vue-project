@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container pt-2">
    <!--  <h2>{{ title }}</h2>
     <h2>{{ title | lowerCase }}</h2>
     <h2>{{ title | upperCase }}</h2>
@@ -102,16 +102,16 @@
         >Submit</button>
       </form>
     </div> -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <!--  <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav"> -->
             <!-- <li class="nav-item active">
               <router-link class="nav-link" to="/">Home</router-link>
             </li> -->
             <!-- <li class="nav-item">
               <router-link class="nav-link" to="/cars">Cars</router-link>
             </li> -->
-            <router-link tag="li" class="nav-item" exact to="/" active-class="active">
+            <!-- <router-link tag="li" class="nav-item" exact to="/" active-class="active">
               <a class="nav-link">Home</a>
             </router-link>
             <router-link tag="li" class="nav-item" to="/cars" active-class="active">
@@ -126,7 +126,16 @@
           </ul>
         </div>
       </nav>
-      <router-view></router-view>
+      <router-view></router-view> -->
+    <div class="form-group">
+      <label for="name">Car name</label>
+      <input type="text" id="name" class="form-control" v-model.trim="carName">
+    </div>
+    <div class="form-group">
+      <label for="year">Car year</label>
+      <input type="text" class="form-control" v-model.number="carYear">
+    </div>
+    <button class="btn btn-success" @click="createCar">Create car</button>
   </div>
 </template>
 
@@ -139,25 +148,40 @@ import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 export default {
   data() {
     return {
-      carName: 'Audi',
-      visible: true,
-      title: 'Hello Tatiana',
-      textarea: 'I am initial text',
-      social: [],
-      radioSocial: '',
-      socialList: ['instagram', 'vk', 'facebook'],
-      socialSelect: 'vk',
-      age: 23,
-      switched: false,
-      email: '',
-      password: '',
-      confirmPassword: ''
+      // carName: 'Audi',
+      // visible: true,
+      // title: 'Hello Tatiana',
+      // textarea: 'I am initial text',
+      // social: [],
+      // radioSocial: '',
+      // socialList: ['instagram', 'vk', 'facebook'],
+      // socialSelect: 'vk',
+      // age: 23,
+      // switched: false,
+      // email: '',
+      // password: '',
+      // confirmPassword: '',
+      carName: '',
+      carYear: 2018
     }
   },
   methods: {
     onSubmit() {
       console.log('Email', this.email)
       console.log('Password', this.password)
+    },
+    createCar() {
+      const car = {
+        name: this.carName,
+        year: this.carYear
+      }
+      this.$http.post('http://localhost:3000/cars', car)
+        .then(response => {
+          return response.json()
+        })
+        .then(newCar => {
+          console.log(newCar)
+        })
     }
   },
   validations: {
