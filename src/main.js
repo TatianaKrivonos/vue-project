@@ -18,6 +18,8 @@ Vue.directive('colored', colorDirective)
 
 Vue.component('app-list', List)
 
+Vue.http.options.root = 'http://localhost:3000/'
+
 Vue.mixin({
   beforeCreate() {
     console.log('beforeCreate')
