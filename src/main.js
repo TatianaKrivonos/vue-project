@@ -8,6 +8,8 @@ import colorDirective from './color'
 import List from './List.vue'
 import router from './routes'
 
+import store from './store'
+
 Vue.use(Vuelidate)
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -32,6 +34,7 @@ Vue.mixin({
 new Vue({
   el: '#app',
   render: h => h(App),
-  router
+  router,
+  store
 })
 

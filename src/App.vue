@@ -1,5 +1,5 @@
 <template>
-  <div class="container pt-2">
+  <div class="container text-center pt-5">
    <!--  <h2>{{ title }}</h2>
     <h2>{{ title | lowerCase }}</h2>
     <h2>{{ title | upperCase }}</h2>
@@ -127,7 +127,7 @@
         </div>
       </nav>
       <router-view></router-view> -->
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="name">Car name</label>
       <input type="text" id="name" class="form-control" v-model.trim="carName">
     </div>
@@ -139,7 +139,9 @@
     <button class="btn btn-primary" @click="loadCars">Load cars</button>
     <ul class="list-group">
       <li class="list-group-item" :key="car.id" v-for="car of cars"><strong>{{ car.name }}</strong> - {{ car.year }}</li>
-    </ul>
+    </ul> -->
+    <app-counter :counter="counter"></app-counter>
+    <app-actions @counterUpdated="counter += $event"></app-actions>
   </div>
 </template>
 
@@ -147,6 +149,8 @@
 import Car from './Car.vue'
 import listMixin from './listMixin'
 import onOff from './onOff'
+import Counter from './Counter.vue'
+import Actions from './Actions.vue'
 import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 
 export default {
@@ -168,7 +172,8 @@ export default {
       carName: '',
       carYear: 2018,
       cars: [],
-      resoursce: null
+      resoursce: null,
+      counter: 0
     }
   },
   methods: {
@@ -244,7 +249,9 @@ export default {
   mixins: [listMixin],
   components: {
     appCar: Car,
-    appOnoff: onOff
+    appOnoff: onOff,
+    appCounter: Counter,
+    appActions: Actions
   },
   directives: {
     font: {
