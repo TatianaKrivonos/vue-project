@@ -141,6 +141,7 @@
       <li class="list-group-item" :key="car.id" v-for="car of cars"><strong>{{ car.name }}</strong> - {{ car.year }}</li>
     </ul> -->
     <app-counter></app-counter>
+    <app-second-counter></app-second-counter>
     <app-actions></app-actions>
   </div>
 </template>
@@ -150,6 +151,7 @@ import Car from './Car.vue'
 import listMixin from './listMixin'
 import onOff from './onOff'
 import Counter from './Counter.vue'
+import SecondCounter from './SecondCounter.vue'
 import Actions from './Actions.vue'
 import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 
@@ -250,7 +252,8 @@ export default {
     appCar: Car,
     appOnoff: onOff,
     appCounter: Counter,
-    appActions: Actions
+    appActions: Actions,
+    appSecondCounter: SecondCounter
   },
   directives: {
     font: {
