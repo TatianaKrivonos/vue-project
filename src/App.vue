@@ -140,8 +140,8 @@
     <ul class="list-group">
       <li class="list-group-item" :key="car.id" v-for="car of cars"><strong>{{ car.name }}</strong> - {{ car.year }}</li>
     </ul> -->
-    <app-counter :counter="counter"></app-counter>
-    <app-actions @counterUpdated="counter += $event"></app-actions>
+    <app-counter></app-counter>
+    <app-actions></app-actions>
   </div>
 </template>
 
@@ -172,8 +172,7 @@ export default {
       carName: '',
       carYear: 2018,
       cars: [],
-      resoursce: null,
-      counter: 0
+      resoursce: null
     }
   },
   methods: {
