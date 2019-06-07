@@ -140,6 +140,7 @@
     <ul class="list-group">
       <li class="list-group-item" :key="car.id" v-for="car of cars"><strong>{{ car.name }}</strong> - {{ car.year }}</li>
     </ul> -->
+    <h3>{{ title }}</h3>
     <app-counter></app-counter>
     <app-second-counter></app-second-counter>
     <app-actions></app-actions>
@@ -175,6 +176,11 @@ export default {
       carYear: 2018,
       cars: [],
       resoursce: null
+    }
+  },
+  computed: {
+    title() {
+      return this.$store.getters.title
     }
   },
   methods: {
