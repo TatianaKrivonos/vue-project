@@ -10,7 +10,11 @@
       updateCounter(val) {
         // this.$emit('counterUpdated', val)
         // this.$store.state.counter += val
-        this.$store.commit('changeCounter', val)
+        // this.$store.commit('changeCounter', val)
+        this.$store.dispatch('asyncChangeCounter', {
+          counterValue: val,
+          timeoutDelay: 1200
+        })
       }
     }
   }
